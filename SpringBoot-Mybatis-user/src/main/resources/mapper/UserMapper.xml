@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lol.dao.UserDao" >
+  <resultMap id="BaseResultMap" type="com.lol.entity.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+<!--  根据id查找用户-->
+  <select id="findOne" resultType="com.lol.entity.User" parameterType="java.lang.Integer" >
+    select id,uid,name,password,tel,address
+    from hero
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+<!--  查找所有的用户-->
+  <select id="findAll" resultType="com.lol.entity.User">
+  	select id,uid,name,password,tel,address
+  	from hero
+  </select>
+<!--增加新用户  -->
+  <insert id="addOne" parameterType="com.lol.entity.User">
+    <!-- 配置插入操作后，获取插入数据的id -->
+    <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+      select @@identity;
+    </selectKey>
+    insert into hero(id,uid,name,password,tel,address)values(#{id},#{uid},#{name},#{password},#{tel},#{address});
+  </insert>
+<!--  删除用户-->
+  <delete id="deleteOne" parameterType="java.lang.Integer">
+    delete from hero where id = #{uid}
+  </delete>
+
+  <!-- 更新用户 -->
+  <update id="updateOne" parameterType="com.lol.entity.User">
+    update hero set uid=#{uid},name=#{name},password=#{password},tel=#{tel},address=#{address} where id=#{id}
+  </update>
+</mapper>

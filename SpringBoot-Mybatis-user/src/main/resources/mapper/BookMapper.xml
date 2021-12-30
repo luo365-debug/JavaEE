@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lol.dao.BookDao" >
+<!--    column 才是数据库列名-->
+    <resultMap id="BaseResultMap" type="com.lol.entity.Book" >
+        <id column="b_id" property="bId" jdbcType="INTEGER" />
+        <result column="b_name" property="bName" jdbcType="VARCHAR" />
+        <result column="author" property="author" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select b_id ,b_name,author
+        from book
+        where b_id = #{bId,jdbcType=INTEGER}
+    </select>
+</mapper>

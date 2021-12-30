@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="utf-8"/>
+<title>login</title>
+<link rel="stylesheet" href="css/LoginStyle.css"/>
+</head>
+
+<body>
+    <div class="content">
+        <form action="index" method="post" th:action="@{/login}">
+            <div class="form sign-in">
+                <h2>欢迎回来</h2>
+                <label>
+                    <span>账号</span>
+                    <input type="id" name="idLogin"/>
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input type="password" name="passwordLogin"/>
+                </label>
+                <p class="forgot-pass">
+                    <!--<a href="javascript:">忘记密码？</a>-->
+                    <a data-toggle="modal" href="#myModal"> 忘记密码?</a>
+                </p>
+                <button type="button" class="submit">
+                    <input type="submit" value="登录" name="UserMethod"/>
+                    <script type="text/javascript">CONST.A=document.getElementById("idLogin").value;</script>
+                </button>
+            </div>
+
+            <div class="sub-cont">
+                <div class="img">
+                    <div class="img__text m--up">
+                        <h2>还未拥有账号</h2>
+                        <p>立即前往注册</p>
+                    </div>
+                    <div class="img__text m--in">
+                        <h2>已经拥有帐号</h2>
+                        <p>返回登录</p>
+                    </div>
+                    <div class="img__btn">
+                        <span class="m--up">注 册</span>
+                        <span class="m--in">登 录</span>
+                    </div>
+                </div>
+                <div class="form sign-up">
+                    <h2>立即注册</h2>
+                    <label>
+                        <span>账号</span>
+                        <input type="id" name="idRegister"/>
+                    </label>
+                    <label>
+                        <span>UID</span>
+                        <input type="uid" name="uidRegister"/>
+                    </label>
+                    <label>
+                        <span>用户名</span>
+                        <input type="username" name="usernameRegister"/>
+                    </label>
+                    <label>
+                        <span>密码</span>
+                        <input type="password" name="passwordRegister"/>
+                    </label>
+                    <label>
+                        <span>手机号</span>
+                        <input type="tel" name="telRegister"/>
+                    </label>
+                    <label>
+                        <span>地址</span>
+                        <input type="address" name="addressRegister"/>
+                    </label>
+                    <button type="button" class="submit">
+                        <input type="submit" value="注册" name="UserMethod" onclick="Register()"/>
+                    </button>
+                </div>
+        </div>
+
+        </form>
+    </div>
+
+    <script src="js/LoginScript.js"></script>
+
+    <script>
+        function Register(){
+            alert("注册成功");
+        }
+    </script>
+	
+	<div style="text-align:center;">
+</div>
+</body>
+
+</html>

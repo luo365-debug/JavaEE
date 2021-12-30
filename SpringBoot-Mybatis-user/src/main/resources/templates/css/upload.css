@@ -1,0 +1,105 @@
+li
+{
+	list-style: none;
+}
+.container
+{
+	width: 1200px;
+	margin: 20px auto 20px;
+	border: 3px solid #f2f1ea;
+	background-color: #f2f1ea;
+}
+.title
+{
+	line-height: 50px;
+}
+.title input
+{
+	vertical-align: middle;
+}
+.title-name
+{
+	position: relative;
+	left: 280px;
+}
+.title-price
+{
+	position: relative;
+	left: 517px;
+}
+.title-num
+{
+	position: relative;
+	left: 610px;
+}
+.title-prices
+{
+	position: relative;
+	left: 712px;
+}
+.title-operation
+{
+	position: relative;
+	left: 819px;
+}
+.book-order
+{
+	overflow: hidden;
+}
+
+.book-list
+{
+	overflow: hidden;
+	background-color: #fff;
+}
+.cb
+{
+	position: relative;
+	top: 60px;
+	left: -425px;
+}
+.book-pic img
+{
+	height: 150px;
+}
+.book-pic
+{
+	position: relative;
+	float: left;
+	left: 50px;
+}
+.book-info
+{
+	position: relative;
+	top: 50px;
+	left: 100px;
+	float: left;
+	color: black;
+	text-align: center;
+}
+.book-price
+{
+	position: relative;
+	top: 55px;
+	left: 236px;
+	float: left;
+	color: black;
+}
+.book-num
+{
+	position: relative;
+	top: 55px;
+	left: 334px;
+}
+.book-prices
+{
+	position: relative;
+	top: 55px;
+	left: 440px;
+}
+.delete
+{
+	position: relative;
+	top: 55px;
+	left: 550px;
+}

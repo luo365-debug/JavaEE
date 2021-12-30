@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lol.dao.ShoppingCartDao">
+
+    <resultMap id="cartListMap1" type="com.lol.entity.ShoppingCart">
+        <id property="sId" column="s_id"/>
+        <result property="price" column="price"/>
+        <association property="book" column="b_id" select="com.lol.dao.BookDao.selectById"/>
+        <association property="announcer" column="u_id" select="com.lol.dao.UserDao.findOne"/>
+        <association property="buyer" column="u1_id" select="com.lol.dao.UserDao.findOne"/>
+    </resultMap>
+    <select id="findAll" resultMap="cartListMap1">
+        select s_id,price,b_id,u_id,u1_id
+        from shopping_cart
+    </select>
+<!--    &lt;!&ndash; 更新订单 &ndash;&gt;-->
+<!--    <update id="updateshoppingCart" parameterType="com.lol.entity.ShoppingCart">-->
+<!--        update shopping_cart set price=#{price},b_id=#{book},u_id=#{announcer},u1_id=#{buyer} where s_id=#{sId}-->
+<!--    </update>-->
+
+<!--    查-->
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="cartListMap1">
+        select s_id, price, b_id, u_id,u1_id
+        from shopping_cart
+<!--        where s_id = #{sId}-->
+        where u_id = #{sId}
+    </select>
+
+
+    <select id="batchDeleteCart" resultType="java.lang.Integer">
+        select s_id from shopping_cart
+        where u_id=#{uId}
+    </select>
+    <select id="selectAllByUser" resultMap="cartListMap1">
+        select s_id, price, b_id, u_id
+        from shopping_cart
+        where u_id = #{uId}
+    </select>
+
+    <select id="selectSubmitCartItems" resultMap="cartListMap1">
+        select s_id, s.price, s.b_id, s.u_id
+        from shopping_cart s, book b
+        where b.b_id=s.b_id
+        and s_id in
+        <foreach collection="array" item="sIdArray"
+                 open="(" separator="," close=")">
+            #{sIdArray}
+        </foreach>
+    </select>
+</mapper>
